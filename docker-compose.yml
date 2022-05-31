@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  node-app:
+    image: node-app-image
+    container_name: node-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    tty: true
+    ports:
+      - "4000:3000"
+    networks:
+      - node-app-net
+
+networks:
+  node-app-net:
+    name: node-app-net

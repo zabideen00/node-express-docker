@@ -1,0 +1,11 @@
+FROM node:18-alpine
+
+LABEL maintainer="Zain Ul Abideen zainulabideen1258@gmail.com"
+
+WORKDIR /app
+
+RUN npm install -g nodemon
+
+COPY . .
+
+ENTRYPOINT /bin/sh entrypoints/local-entrypoint.sh

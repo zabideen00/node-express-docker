@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  node-app-local:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    image: node-app-image-local
+    user: ${USER_ID}
+    env_file:
+      - .env
+    container_name: node-app-local
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3000:3000"
+    networks:
+      - node-app-net
+    volumes:
+      - ./:/app/
+
+networks:
+  node-app-net:
+    name: node-app-net
